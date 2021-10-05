@@ -1,0 +1,16 @@
+
+for letter in "Death Star":
+    if letter == " ":
+        continue
+    print(letter)
+for i in (100,0):
+    print
+yoda.write('Bryce Huey',font=("Arial", 16, "normal")) # signs your name to your art
+turtle.exitonclick() #Keeps pycharm window open so we can see the drawing
+
+
+
+
+# Pass (Pass on to the next thing in the loop
+# Break (Stop the loop
+# Continue (Restart the loop
