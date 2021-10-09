@@ -6,6 +6,24 @@ COIN TOSS PROGRAM
 3.) Add a loop so that the program does this 50 times.
 4.) Create a running total for the number of heads and the number of tails and print the total at the end.
 '''
+import random
+score = 0
+coin = 0
+user = 0
+for i in range(0,50):
+    coin = random.randint(0,1)
+    user = int(input("Heads or Tails (heads =1, tails =0)-   "))
+    if user == coin:
+        print("You won!")
+        score += 1
+    else:
+        print("Try again!")
+print("You won",score,"times and lost",50-score,"times" )
+
+print("done")
+
+
+
 
 
 
