@@ -18,6 +18,9 @@ import random
 comp = 0
 q = False
 ply = 0
+games = 0
+win = 0
+lose = 0
 while not q:
     print("Do you want to play rock paper scissors?")
     ply = input("Ans- ")
@@ -26,6 +29,7 @@ while not q:
             comp = random.randint(1,3)# Inational processing before computing
             print("Rock, Paper, or Scissors?")
             hum = input("Ans- ")
+            games += 1
             if hum.lower() == "rock" or hum.lower() == "r":
                 hum = 1
             elif hum.lower() == "paper" or hum.lower() == "p":
@@ -45,22 +49,32 @@ while not q:
 
             if hum == 1 and comp == 2: # Logic system
                 print("You lost")
+                lose += 1
             elif hum == 1 and comp == 3:
                 print("You Won")
+                win += 1
             elif hum == 2 and comp == 1:
                 print("You Won")
+                win += 1
             elif hum == 2 and comp == 3:
-                print("You Lost")
+                print("You lost")
+                lose += 1
             elif hum == 3 and comp == 2:
                 print("You Won")
+                win += 1
             elif hum == 3 and comp == 1:
                 print("You lost")
+                lose +=1
             else:
                 print("Your tided")
     elif ply.lower() == "no" or ply.lower() == "n" or ply.lower() == "nope":
         break
     else:
         print("Please answer with yes or no")
+print("You played",games,"games.")
+print("You won",win,"times.")
+print("You lost",lose,"times.")
+print("done.")
 
 
 
