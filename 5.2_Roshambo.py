@@ -21,10 +21,11 @@ ply = 0
 games = 0
 win = 0
 lose = 0
+tie = 0
 while not q:
     print("Do you want to play rock paper scissors?")
     ply = input("Ans- ")
-    if ply.lower() == "yes" or ply.lower() == "ye" or ply.lower() == "y" or ply.lower == "sure":
+    if ply.lower() == "yes" or ply.lower() == "ye" or ply.lower() == "y" or ply.lower() == "sure":
         for i in range(0,3):
             comp = random.randint(1,3)# Inational processing before computing------------------
             print("Rock, Paper, or Scissors?")
@@ -66,7 +67,8 @@ while not q:
                 print("You lost")
                 lose +=1
             else:
-                print("Your tided") #End of Logic unit -------------------------------------
+                print("Your tided")
+                tie += 1            #End of Logic unit -------------------------------------
 
     elif ply.lower() == "no" or ply.lower() == "n" or ply.lower() == "nope":
         break
@@ -75,6 +77,7 @@ while not q:
 print("You played",games,"games.") #Score system
 print("You won",win,"times.")
 print("You lost",lose,"times.")
+print("and tied",tie,"times")
 print("done.")
 
 
