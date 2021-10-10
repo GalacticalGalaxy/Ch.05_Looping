@@ -68,7 +68,7 @@ while not q:
                 print("You lost")
                 lose +=1
             else:
-                print("Your tided")
+                print("Your tied")
                 tie += 1            #End of Logic unit -------------------------------------
 
     elif ply.lower() == "no" or ply.lower() == "n" or ply.lower() == "nope":
