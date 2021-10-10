@@ -25,7 +25,7 @@ tie = 0
 while not q:
     print("Do you want to play rock paper scissors?")
     ply = input("Ans- ")
-    if ply.lower() == "yes" or ply.lower() == "ye" or ply.lower() == "y" or ply.lower() == "sure":
+    if ply.lower() == "yes" or ply.lower() == "yeah" or ply.lower() == "y" or ply.lower() == "sure":
         for i in range(0,3):
             comp = random.randint(1,3)# Inational processing before computing------------------
             print("Rock, Paper, or Scissors?")
@@ -35,12 +35,13 @@ while not q:
                 hum = 1
             elif hum.lower() == "paper" or hum.lower() == "p":
                 hum = 2
-            elif hum.lower() == "scissors" or hum.lower == "scissor" or hum.lower == "s":
+            elif hum.lower() == "scissors" or hum.lower() == "scissor" or hum.lower() == "s":
                 hum = 3
             else:
                 print("Please enter Rock Paper or Scissors")
                 print("Try again")
-                break
+                i -= 1
+                continue
             if comp == 1:
                 print("Comp- Rock")
             elif comp == 2:
