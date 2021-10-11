@@ -14,22 +14,28 @@ hunt = 0
 # 3 paranoid
 para = 0
 shas = 0 #gamemode
+shasnum = 0 #3 round wait
 
+camHealth = 7
+cantWat = 5
 miles = 0
 done = False
 dead = False
 hum = 0
 day = 0
+div = 0
 print("Welcome to the camel game!")
 print("Your goal is to travel 200 miles though deep forests")
 
 while not done:
     print("Good Luck!")
     print("You start your adventure.")
+    shas = random.randint(0, 3)
     while not dead:
-        shas = random.randint(0,3)
 
-        time.sleep(3)
+        shasnum += 1
+        time.sleep(2)
+        print("You have traveled", miles, "miles")
         print("A. Drink from your canteen.")
         print("B. Ahead moderate speed.")
         print("C. Ahead full speed.")
@@ -39,16 +45,26 @@ while not done:
         print("Q. Quit.")
         hum = input("- ")
         if hum.lower() == "a": #Drink
-            day +=1
-
+            cantWat -= 1
+            continue
         elif hum.lower() == "b": #Mod Sped
-            continue
+            miles += 8 - div
+            day += 1
+            print("Your camel is walking.")
         elif hum.lower() == "c": #Full Sped
-            miles +=
+            miles += 16 - div
+            day += 1
+            print("Your camel is running at blisting speeds.")
         elif hum.lower() == "d": #Stop night
-            continue
+            camHealth += 7
+            day += 1
         elif hum.lower() == "e": #Status check
+            print()
+            print()
+            print()
+            print()
             continue
+
         elif hum.lower() == "f": #Divert
             continue
         elif hum.lower() == "q": #Quit
@@ -57,14 +73,22 @@ while not done:
             break
         else:
             print("Please answer with a letter")
-        if shas == 1:
-            wolv += 8
-        elif shas == 2:
-            hunt += 13
-        else:
-            para += 10
 
-        if
+        if shasnum > 2:
+
+            if shas == 1:
+                wolv += random.randint(6,13)
+                print("Something is", miles - wolv, "miles away")
+            elif shas == 2:
+                hunt += 9
+                print("Something is", miles - hunt, "miles away")
+            else:
+                para += 10
+                print("Something is", miles - para, "miles away")
+        else:
+            pass
+
+
 
 
 
