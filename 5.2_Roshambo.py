@@ -91,6 +91,7 @@ while not q:
     else:
         print("Please answer with yes or no")
 print("You played",games,"games.") #Score system
+print("\033[1;32;48m Bright Green  \n")
 print("You won",win,"times.")
 print("You lost",lose,"times.")
 print("and tied",tie,"times")
