@@ -19,7 +19,7 @@ oas = 0
 
 camHealth = 7
 cantWat = 3
-comd = 4
+comd = 5
 miles = 0
 done = False
 dead = False
@@ -39,7 +39,7 @@ while not done:
         time.sleep(2)
 
         print("\033[1;32;48m") #Green
-        print("You have traveled", miles, "miles")
+        print("You have traveled", "\033[1;36;48m", miles, "\033[1;32;48m", "miles")
         print("\033[1;32;48m", "A. Drink from your canteen.") # Green
         print("\033[1;33;48m", "B. Ahead moderate speed.") # yellow
         print("\033[1;34;48m", "C. Ahead full speed.")  # blue
@@ -52,7 +52,7 @@ while not done:
         if hum.lower() == "a": #Drink------------------------
             if cantWat > 0:
                 cantWat -= 1
-                comd = 4
+                comd = 5
                 print("\033[1;32;48m\n")  #
                 print("You drank some water.")
             elif cantWat == 0 or cantWat < 0:
@@ -103,7 +103,7 @@ while not done:
             print("Your camel is eating figs")
             print("and Your water has been refilled!")
             cantWat = 3
-            comd = 4
+            comd = 5
             camHealth = 7
 
         if comd == 0 or camHealth < 0 or hunt > miles or wolv > miles:
