@@ -74,6 +74,31 @@ while not done:
         elif hum.lower() == "d": #Stop night---------------------------------
             camHealth = 7
             day += 1
+            for i in range(1,10):
+                s = random.randint(1,30)
+                time.sleep(1)
+                if s > 10 and s < 17 or s == 10:
+                    print("\033[1;36;48m", "...") # Cyan
+                elif s > 17 and s < 24 or s == 17:
+                    print("\033[1;33;48m", "...") # Yellow
+                elif s > 24 and s < 28 or s == 24:
+                    print("\033[1;32;48m", "...") # Green
+                elif s > 28 or s == 28:
+                    print("\033[1;31;48m", "...!") # Red
+                else:
+                    print("\033[1;35;48m", "...") # Purple
+
+                if s > 28:
+                    print("You wake up to the sound twigs snapping." or print("Something woke you up."))
+                    print("Will you either")
+                    print("1. Check it out.")
+                    print("2. Go back to sleep")
+                    hum = input("- ")
+                    if hum == 1:
+                        pass
+                    elif hum == 2:
+                        print("You went back to sleep")
+
             print("\033[1;35;48m", "You stopped for the night.")
         elif hum.lower() == "e": #Status check-----------------------------------
             print("\033[1;36;48m")
