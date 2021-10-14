@@ -12,13 +12,12 @@ coin = 0
 user = 0
 for i in range(0,50):
     coin = random.randint(0,1)
-    user = int(input("Heads or Tails (heads =1, tails =0)-   "))
-    if user == coin:
-        print("You won!")
+    if 1 == coin:
+        print("Heads")
         score += 1
     else:
-        print("Try again!")
-print("You won",score,"times and lost",50-score,"times" )
+        print("Tails")
+print("You Heads",score,"times and Tails",50-score,"times" )
 
 print("done")
 

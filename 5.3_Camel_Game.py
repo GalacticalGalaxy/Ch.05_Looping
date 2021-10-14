@@ -8,15 +8,15 @@ import random
 import time
 # Varibles---------------------------------
 # 1 wolves
-wolv = 0
+wolv = -20
 # 2 hunters
-hunt = 0
+hunt = -20
 # 3 paranoid
 para = 0
-shas = random.randint(1,2) #gamemode
 shasnum = 0 #3 round wait
 oas = 0
 
+pray = random.randint(1,5)
 camHealth = 7
 cantWat = 3
 comd = 5
@@ -33,7 +33,7 @@ print("Your goal is to travel 200 miles though deep forests")
 while not done:
     print("Good Luck!")
     print("You start your adventure.")
-    shas = random.randint(0, 2)
+    shas = random.randint(0, 1)
     while not dead:
         oas = random.randint(1,10)
         time.sleep(2)
@@ -63,6 +63,7 @@ while not done:
             miles += 8 - div
             day += 1
             comd -= 1
+            camHealth -= 2
             print("\033[1;33;48m","Your camel is walking.") #Yellow
         elif hum.lower() == "c": #Full Sped----------------------------
             miles += 16 - div
@@ -76,7 +77,7 @@ while not done:
             day += 1
             for i in range(1,10):
                 s = random.randint(1,30)
-                time.sleep(1)
+                time.sleep(.3)
                 if s > 10 and s < 17 or s == 10:
                     print("\033[1;36;48m", "...") # Cyan
                 elif s > 17 and s < 24 or s == 17:
@@ -93,11 +94,32 @@ while not done:
                     print("Will you either")
                     print("1. Check it out.")
                     print("2. Go back to sleep")
-                    hum = input("- ")
+                    hum = int(input("- "))
                     if hum == 1:
-                        pass
+                        if miles - hunt < 5 and s == 30:
+                            print("You found wolves and scared them off.")
+                            print("In the process you lost your sleep.")
+                        elif miles - hunt < 5 and s == 30:
+                            print("You found hunters and scared them off.")
+                            print("In the process you lost your sleep.")
+                        else:
+                            print("You found nothing and you lost your sleep.")
+                            break
                     elif hum == 2:
                         print("You went back to sleep")
+                        if miles - wolv < 17 and s == 30:
+                            print("The wolves got you")
+                            done = True
+                            dead = True
+                            break
+                        elif miles - hunt < 17 and s == 30:
+                            print("The hunters got you")
+                            done = True
+                            dead = True
+                            break
+                    else:
+                        print("please respond with a 1 or a 2.")
+                        continue
 
             print("\033[1;35;48m", "You stopped for the night.")
         elif hum.lower() == "e": #Status check-----------------------------------
@@ -138,6 +160,24 @@ while not done:
             done = True
             dead = True
             break
+        # if comd == 0:
+        #     print("You ran out of commands")
+        #     print("Will you either,")
+        #     print("A. Pray for help.")
+        #     print("B. Quit.")
+        #     hum = input("- ")
+        #     if hum.lower() == "a":
+        #         if pray == 1:
+        #             print("You were found sleeping")
+        #             print("You were given water")
+        #             continue
+        #         else:
+        #             print("You were never found" or "The wolves found you first")
+        #             print("You died")
+        #             done = True
+        #             dead = True
+        #             break
+
         if miles > 200:
             print("\033[1;33;48m\n")  # Green
             print("You Won! Great Job!")
@@ -145,19 +185,15 @@ while not done:
             dead = True
             break
 
-        if shasnum > 2:
-
-            if shas == 1:
-                wolv += random.randint(6,13)
-                print("Something is", miles - wolv, "miles away w")
-            elif shas == 2:
-                hunt += 9
-                print("Something is", miles - hunt, "miles away h")
-            else:
-                para += 10
-                print("Something is", miles - para, "miles away p")
-        else:
-            pass
+        if shas == 0:
+            wolv += random.randint(6,12)
+            print("Something is", miles - wolv, "miles away w")
+        elif shas == 1:
+            hunt += 9
+            print("Something is", miles - hunt, "miles away h")
+        # elif shas == -1:
+        #     para += 10
+        #     print("Something is", miles - para, "miles away p")
 
 
 
