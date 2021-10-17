@@ -33,7 +33,7 @@ print("Your goal is to travel 200 miles though deep forests")
 while not done:
     print("Good Luck!")
     print("You start your adventure.")
-    shas = random.randint(0, 1)
+    shas = random.randint(1, 2)
     while not dead:
         oas = random.randint(1,10)
         time.sleep(2)
@@ -45,7 +45,6 @@ while not done:
         print("\033[1;34;48m", "C. Ahead full speed.")  # blue
         print("\033[1;35;48m", "D. Stop for the night.")  # purple
         print("\033[1;36;48m", "E. Status check.")  # cyan
-        print("\033[1;38;48m", "F. Divert from the main path (slow)")  # white
         print("\033[1;31;48m", "Q. Quit.")  # Red
 
         hum = input("- ")
@@ -89,7 +88,7 @@ while not done:
                 else:
                     print("\033[1;35;48m", "...") # Purple
 
-                if s > 28:
+                if s > 28: # Wake up Sleep night
                     print("You wake up to the sound twigs snapping." or print("Something woke you up."))
                     print("Will you either")
                     print("1. Check it out.")
@@ -111,12 +110,15 @@ while not done:
                             print("The wolves got you")
                             done = True
                             dead = True
-                            break
+                            break #@@@@@@@@@@@@@@@@@@@@@@@@@########################ASK HERMON STOP COMMANSD
                         elif miles - hunt < 17 and s == 30:
                             print("The hunters got you")
                             done = True
                             dead = True
-                            break
+                            break #@@@@@@@@@@@@@@@@@@@@@@@@@########################ASK HERMON STOP COMMANSD
+                        else:
+                            camHealth = 7
+
                     else:
                         print("please respond with a 1 or a 2.")
                         continue
@@ -127,7 +129,11 @@ while not done:
             print("Your camel has", camHealth, "good days left.")
             print("You have", comd,"commands left without a drink.")
             print("You have", cantWat, "drinks left in your canteen.")
-            print()
+            if shas == 0:
+                print("Something is", miles - wolv, "miles away")
+            elif shas == 1:
+                print("Something is", miles - hunt, "miles away")
+
             continue
 
         elif hum.lower() == "f": #Divert------------------------------------
@@ -152,45 +158,67 @@ while not done:
             cantWat = 3
             comd = 5
             camHealth = 7
-
-        if comd == 0 or camHealth < 0 or hunt > miles or wolv > miles:
-            print("\033[1;31;48m\n")  # Red
+                    # DEATH CODE -------------------------------------------------------------------
+        # if comd == 0 or camHealth < 0 or hunt > miles or wolv > miles:
+        #     print("\033[1;31;48m\n")  # Red
+        #     print("You died")
+        #     print("You made it", miles, "miles.")
+        #     done = True
+        #     dead = True
+        #     break
+        if comd == 0:
+            print("You ran out of commands")
+            print("Will you either,")
+            print("A. Pray for help.")
+            print("B. Quit.")
+            hum = input("- ")
+            if hum.lower() == "a":
+                pray = random.randint(1,5)
+                if pray == 5:
+                    print("You were found sleeping")
+                    print("You were given water")
+                    continue
+                else:
+                    print("You were never found" or "The wolves found you first")
+                    print("You died")
+                    done = True
+                    dead = True
+                    break
+            else:
+                print("You gave up")
+                done = True
+                dead = True
+                break
+        if hunt > miles:
+            print("The hunters caught up to you.")
             print("You died")
-            print("You made it", miles, "miles.")
             done = True
             dead = True
             break
-        # if comd == 0:
-        #     print("You ran out of commands")
-        #     print("Will you either,")
-        #     print("A. Pray for help.")
-        #     print("B. Quit.")
-        #     hum = input("- ")
-        #     if hum.lower() == "a":
-        #         if pray == 1:
-        #             print("You were found sleeping")
-        #             print("You were given water")
-        #             continue
-        #         else:
-        #             print("You were never found" or "The wolves found you first")
-        #             print("You died")
-        #             done = True
-        #             dead = True
-        #             break
+        if wolv > miles:
+            print("The Wolves caught up to you.")
+            print("You died")
+            done = True
+            dead = True
+            break
+        if camHealth <= 0:
+            print("You ran your camel to death!")
+            done = True
+            dead = True
+            break
 
-        if miles > 200:
+        if miles >= 200: #You Won --------------------------------------------------
             print("\033[1;33;48m\n")  # Green
             print("You Won! Great Job!")
             done = True
             dead = True
             break
-
-        if shas == 0:
-            wolv += random.randint(6,12)
-            print("Something is", miles - wolv, "miles away w")
-        elif shas == 1:
+        if shas == 1:
+            print("Something is", miles - wolv, "miles away")
+            wolv += random.randint(6, 12)
+        elif shas == 2:
+            print("Something is", miles - hunt, "miles away")
             hunt += 9
-            print("Something is", miles - hunt, "miles away h")
         # elif shas == -1:
         #     para += 10
         #     print("Something is", miles - para, "miles away p")
