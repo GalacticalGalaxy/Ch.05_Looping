@@ -45,7 +45,11 @@ while not quit:
         and you can only drink water 3 times before you need an oasis.
         
         Make sure you stay away from the hunters and wolves!
-        say anything to continue
+        They might try to attack while you sleep!
+        If you wake up you will lose your sleep for the night.
+        
+        Be Safe!
+        
         ''')
         x = input("- ")
     else:
@@ -80,8 +84,8 @@ while not quit:
             print("\033[1;32;48m") #Green
             print("You have traveled", "\033[1;36;48m", miles, "\033[1;32;48m", "miles")
             print("\033[1;32;48m", "A. Drink from your canteen.") # Green
-            print("\033[1;33;48m", "B. Ahead moderate speed.") # yellow
-            print("\033[1;34;48m", "C. Ahead full speed.")  # blue
+            print("\033[1;33;48m", "B. Ahead moderate speed.(2)") # yellow
+            print("\033[1;34;48m", "C. Ahead full speed.(3-4)")  # blue
             print("\033[1;35;48m", "D. Stop for the night.")  # purple
             print("\033[1;36;48m", "E. Status check.")  # cyan
             print("\033[1;31;48m", "Q. Quit.")  # Red
@@ -266,13 +270,3 @@ while not quit:
             quit = True
             print("You Quit.")
             break
-
-
-
-
-
-
-
-
-
-
